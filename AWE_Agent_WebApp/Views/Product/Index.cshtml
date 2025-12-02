@@ -1,0 +1,28 @@
+﻿@model IEnumerable<AWE_Agent_WebApp.Models.Product>
+
+<h2>Product List</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ProductID</th>
+            <th>SKU</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>StockQty</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.ProductID</td>
+                <td>@p.SKU</td>
+                <td>@p.Name</td>
+                <td>@p.Price.ToString("N0")</td>
+                <td>@p.StockQty</td>
+            </tr>
+        }
+    </tbody>
+</table>
