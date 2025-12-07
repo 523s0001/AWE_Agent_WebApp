@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Apple Products";
+}
+
+<div style="text-align:center; margin-top:40px;">
+    <h2 style="font-weight:700;">Shop Deals by Category</h2>
+</div>
+
+<link rel="stylesheet" href="~/Content/site.css" />
+
+<div class="category-container">
+
+    <a href="@Url.Action("Details", "Product", new { id = 1 })" class="category-card">
+        <img src="~/Images/cat_apple.jpg" class="category-img" />
+        <p>Apple</p>
+    </a>
+
+    <a href="@Url.Action("Details", "Product", new { id = 2 })" class="category-card">
+        <img src="~/Images/cat_fridge.jpg" class="category-img" />
+        <p>Major Appliance</p>
+    </a>
+
+    <a href="@Url.Action("Details", "Product", new { id = 3 })" class="category-card">
+        <img src="~/Images/cat_game.jpg" class="category-img" />
+        <p>Video Games</p>
+    </a>
+
+    <a href="@Url.Action("Details", "Product", new { id = 4 })" class="category-card">
+        <img src="~/Images/cat_laptop.jpg" class="category-img" />
+        <p>Laptops & Desktop</p>
+    </a>
+
+    <a href="@Url.Action("Details", "Product", new { id = 5 })" class="category-card">
+        <img src="~/Images/cat_phone.jpg" class="category-img" />
+        <p>Cellphones</p>
+    </a>
+
+    <a href="@Url.Action("Details", "Product", new { id = 6 })" class="category-card">
+        <img src="~/Images/cat_tv.jpg" class="category-img" />
+        <p>TVs & Projector</p>
+    </a>
+
+</div>

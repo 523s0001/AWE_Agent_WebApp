@@ -1,28 +1,51 @@
-﻿@model IEnumerable<AWE_Agent_WebApp.Models.Product>
+﻿@{
+    ViewBag.Title = "Home";
+}
 
-<h2>Product List</h2>
+<!-- Banner lớn -->
+<img class="banner-img" src="@Url.Content("~/Images/banner.jpg")" alt="Black Friday Banner" />
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>ProductID</th>
-            <th>SKU</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>StockQty</th>
-        </tr>
-    </thead>
+<br />
+<br />
 
-    <tbody>
-        @foreach (var p in Model)
-        {
-            <tr>
-                <td>@p.ProductID</td>
-                <td>@p.SKU</td>
-                <td>@p.Name</td>
-                <td>@p.Price.ToString("N0")</td>
-                <td>@p.StockQty</td>
-            </tr>
-        }
-    </tbody>
-</table>
+<h2>Shop deals by category</h2>
+
+<div class="d-flex flex-wrap">
+
+    <!-- Apple -->
+    <div class="category-card">
+        <img class="category-img" src="@Url.Content("~/Images/cat_apple.jpg")" alt="Apple" />
+        <p>Apple</p>
+    </div>
+
+    <!-- Laptop & Desktop -->
+    <div class="category-card">
+        <img class="category-img" src="@Url.Content("~/Images/cat_laptop.jpg")" alt="Laptop & Desktop" />
+        <p>Laptop & Desktop</p>
+    </div>
+
+    <!-- TVs & Projectors -->
+    <div class="category-card">
+        <img class="category-img" src="@Url.Content("~/Images/cat_tv.jpg")" alt="TVs & Projector" />
+        <p>TVs & Projector</p>
+    </div>
+
+    <!-- Video Games -->
+    <div class="category-card">
+        <img class="category-img" src="@Url.Content("~/Images/cat_game.jpg")" alt="Video Games" />
+        <p>Video Games, Console & VR</p>
+    </div>
+
+    <!-- Major Appliances -->
+    <div class="category-card">
+        <img class="category-img" src="@Url.Content("~/Images/cat_fridge.jpg")" alt="Major Appliance" />
+        <p>Major Appliance</p>
+    </div>
+
+    <!-- Cellphones -->
+    <div class="category-card">
+        <img class="category-img" src="@Url.Content("~/Images/cat_phone.jpg")" alt="Cellphones & Accessories" />
+        <p>Cellphones & Accessories</p>
+    </div>
+
+</div>

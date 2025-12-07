@@ -1,20 +1,48 @@
-﻿/* Set padding to keep content from hitting the edges */
-.body-content {
-    margin-top: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
+﻿/* ===== CATEGORY GRID ===== */
+
+.category-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+.category-card {
+    width: 180px;
+    padding: 20px;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 15px;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    color: black;
+    border: 1px solid #e8e8e8;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+    /* Hover card */
+    .category-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0px 10px 25px rgba(0,0,0,0.15);
+        cursor: pointer;
+    }
+
+/* Category image */
+.category-img {
+    width: 150px;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.25s ease;
+}
+
+/* Image hover zoom effect */
+.category-card:hover .category-img {
+    transform: scale(1.08);
+}
+
+/* Name label */
+.category-card p {
+    font-size: 16px;
+    margin-top: 12px;
+    font-weight: 600;
 }

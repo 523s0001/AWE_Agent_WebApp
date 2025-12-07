@@ -1,0 +1,178 @@
+﻿@model List<AWE_Agent_WebApp.Models.CartItem>
+
+@{
+    ViewBag.Title = "Payment";
+}
+
+<style>
+    .payment-box {
+        background: white;
+        padding: 30px;
+        border-radius: 16px;
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .payment-option {
+        padding: 15px;
+        border-radius: 12px;
+        border: 1px solid #ccc;
+        margin-bottom: 15px;
+        transition: 0.2s;
+        cursor: pointer;
+    }
+
+        .payment-option:hover {
+            background: #f7f7f7;
+            border-color: #888;
+        }
+
+    .payment-input {
+        width: 100%;
+        height: 48px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        padding-left: 15px;
+        margin-bottom: 15px;
+    }
+
+    .payment-btn {
+        width: 100%;
+        height: 48px;
+        border-radius: 10px;
+        background: #222;
+        color: white;
+        font-weight: 600;
+        transition: 0.2s;
+    }
+
+        .payment-btn:hover {
+            background: #000;
+        }
+
+    .order-summary-box {
+        background: white;
+        padding: 25px;
+        border-radius: 16px;
+        border: 1px solid #ddd;
+    }
+
+    .order-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+        .order-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin-right: 15px;
+            border-radius: 8px;
+        }
+</style>
+
+<div class="container mt-4">
+
+    <a href="/Checkout/Index" class="back-link mb-4" style="display:block; text-decoration:none; font-size:18px;">
+        ← Back to Shipping
+    </a>
+
+    <div class="row">
+
+        <!-- LEFT SIDE: PAYMENT FORM -->
+        <div class="col-md-7">
+            <div class="payment-box">
+
+                <h3 class="fw-bold mb-4">💳 Payment Method</h3>
+
+                <label class="payment-option">
+                    <input type="radio" name="pay" checked />
+                    Credit / Debit Card
+                </label>
+
+                <label class="payment-option">
+                    <input type="radio" name="pay" />
+                    PayPal
+                </label>
+
+                <label class="payment-option">
+                    <input type="radio" name="pay" />
+                    Cash on Delivery (COD)
+                </label>
+
+                <hr class="my-4" />
+
+                <h4 class="fw-bold mb-3">Card Details</h4>
+
+                <form method="post" action="/Checkout/CompleteOrder">
+
+                    <input type="text" class="payment-input" placeholder="Cardholder name" required />
+
+                    <input type="text" class="payment-input" placeholder="Card number" required />
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" class="payment-input" placeholder="MM/YY" required />
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="payment-input" placeholder="CVV" required />
+                        </div>
+                    </div>
+
+                    <button class="payment-btn mt-2">Complete Payment</button>
+
+                </form>
+
+            </div>
+        </div>
+
+
+        <!-- RIGHT SIDE: ORDER SUMMARY -->
+        <div class="col-md-5">
+
+            <div class="order-summary-box">
+
+                <h3 class="fw-bold mb-3">Order Summary</h3>
+                <hr />
+
+                @foreach (var item in Model)
+                {
+                    <div class="order-item">
+                        <img src="@item.Image" />
+                        <div class="flex-grow-1">
+                            <div class="fw-bold">@item.Name</div>
+                            <div class="text-muted">Qty: @item.Quantity</div>
+                        </div>
+                        <div class="fw-bold">$@item.Price</div>
+                    </div>
+                }
+
+                <hr />
+
+                @{
+                    decimal subtotal = Model.Sum(x => x.Price * x.Quantity);
+                }
+
+                <div class="d-flex justify-content-between mb-1">
+                    <span>Subtotal</span>
+                    <span>@subtotal.ToString("#,##0")</span>
+                </div>
+
+                <div class="d-flex justify-content-between text-success mb-1">
+                    <span>Shipping fee</span>
+                    <span>FREE</span>
+                </div>
+
+                <hr />
+
+                <h4 class="fw-bold d-flex justify-content-between">
+                    <span>Total:</span>
+                    <span class="text-primary">@subtotal.ToString("#,##0")</span>
+                </h4>
+
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,85 @@
+@model List<AWE_Agent_WebApp.Models.CartItem>
+
+@{
+    ViewBag.Title = "Shopping Cart";
+}
+
+<div class="container mt-4">
+
+    <h1 class="fw-bold mb-3">Shopping Cart</h1>
+    <hr />
+
+    <div class="row">
+
+        <!-- CART ITEMS -->
+        <div class="col-md-8">
+            @foreach (var item in Model)
+            {
+                <div class="d-flex p-3 mb-3" style="background:#f3f3f3; border-radius:16px;">
+
+                    <img src="@Url.Content(item.Image)" style="width:120px; height:120px; object-fit:contain;" />
+
+                    <div class="ms-3 flex-grow-1">
+                        <h5 class="fw-bold">@item.Name</h5>
+                        <p class="text-muted">@item.Category</p>
+
+                        <div class="d-flex align-items-center">
+
+                            <a href="@Url.Action("Decrease","ShoppingCart", new { id = item.Id })"
+                               class="btn btn-light">-</a>
+
+                            <span class="mx-3">@item.Quantity</span>
+
+                            <a href="@Url.Action("Increase","ShoppingCart", new { id = item.Id })"
+                               class="btn btn-light">+</a>
+                        </div>
+                    </div>
+
+                    <div class="text-end">
+                        <h5 class="text-success fw-bold">$@item.Price</h5>
+
+                        <a href="@Url.Action("Remove","ShoppingCart", new { id = item.Id })"
+                           style="color:black; font-size:22px;">
+                            ??
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- ORDER SUMMARY -->
+        <div class="col-md-4">
+            <div style="background:#f3f3f3; padding:25px; border-radius:16px;">
+
+                <h3 class="fw-bold">Order summary</h3>
+                <hr />
+
+                @{
+                    decimal subtotal = Model.Sum(x => x.Price * x.Quantity);
+                }
+
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Subtotal</span>
+                    <span>@subtotal.ToString("#,##0") ?</span>
+                </div>
+
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Shipping fee</span>
+                    <span class="text-success">FREE</span>
+                </div>
+
+                <hr />
+
+                <div class="d-flex justify-content-between mb-3">
+                    <h4>Total</h4>
+                    <h4 class="text-success">@subtotal.ToString("#,##0") ?</h4>
+                </div>
+
+                <a href="/Checkout" class="btn btn-dark w-100 mb-2">Proceed to checkout</a>
+                <a href="/" class="btn btn-secondary w-100">Continue shopping</a>
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,37 @@
+﻿@model AWE_Agent_WebApp.Models.ProductViewModel
+
+@{
+    ViewBag.Title = Model.Name;
+}
+
+<link rel="stylesheet" href="~/Content/product.css" />
+
+<div class="product-container">
+
+    <!-- LEFT: PRODUCT IMAGE -->
+    <div class="product-image">
+        <img src="@Model.ImagePath" alt="@Model.Name" />
+    </div>
+
+    <!-- RIGHT: PRODUCT INFO -->
+    <div class="product-info">
+
+        <p class="breadcrumb">@Model.Category</p>
+
+        <h2 class="product-title">@Model.Name</h2>
+
+        <p class="model-info">Model: @Model.SKU</p>
+
+        <p class="rating">
+            ⭐ @Model.Rating
+            <span class="reviews">(@Model.Reviews reviews)</span>
+        </p>
+
+        <h1 class="price">$@Model.Price</h1>
+
+        <p class="old-price">Save $@(@Model.OldPrice - @Model.Price)</p>
+
+        <button class="add-cart-btn">Add to cart</button>
+
+    </div>
+</div>

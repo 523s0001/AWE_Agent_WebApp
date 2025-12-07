@@ -1,33 +1,106 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home";
 }
 
-<main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
+<style>
+    /* CATEGORY HOVER EFFECT */
+    .category-link {
+        text-decoration: none;
+        color: black;
+    }
 
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
+    .category-card {
+        background: #ffffff;
+        padding: 15px;
+        border-radius: 16px;
+        transition: 0.25s;
+    }
+
+        .category-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+            cursor: pointer;
+        }
+
+    .category-img {
+        width: 160px;
+        height: 120px;
+        object-fit: contain;
+        margin-bottom: 10px;
+    }
+</style>
+
+
+<!-- 🔵 BLACK FRIDAY BANNER -->
+<div class="container mt-4">
+    <img src="~/Images/banner.png"
+         style="width:100%; border-radius:18px; object-fit:cover;" />
+</div>
+
+
+<!-- CATEGORY SECTION -->
+<h3 class="text-center mt-5 mb-4 fw-bold">Shop Deals by Category</h3>
+
+<div class="row text-center justify-content-center">
+
+    <!-- APPLE -->
+    <div class="col-2">
+        <a href="/Category/Apple" class="category-link">
+            <div class="category-card mx-auto">
+                <img src="~/Images/apple_imac.jpg" class="category-img" />
+                <div>Apple</div>
+            </div>
+        </a>
     </div>
-</main>
+
+    <!-- MAJOR APPLIANCE -->
+    <div class="col-2">
+        <a href="/Category/MajorAppliance" class="category-link">
+            <div class="category-card mx-auto">
+                <img src="~/Images/cat_fridge.jpg" class="category-img" />
+                <div>Major Appliance</div>
+            </div>
+        </a>
+    </div>
+
+    <!-- VIDEO GAMES -->
+    <div class="col-2">
+        <a href="/Category/VideoGames" class="category-link">
+            <div class="category-card mx-auto">
+                <img src="~/Images/cat_game.jpg" class="category-img" />
+                <div>Video Games</div>
+            </div>
+        </a>
+    </div>
+
+    <!-- LAPTOPS & DESKTOP -->
+    <div class="col-2">
+        <a href="/Category/Laptops" class="category-link">
+            <div class="category-card mx-auto">
+                <img src="~/Images/cat_laptop.jpg" class="category-img" />
+                <div>Laptops & Desktop</div>
+            </div>
+        </a>
+    </div>
+
+    <!-- CELLPHONES -->
+    <div class="col-2">
+        <a href="/Category/Cellphones" class="category-link">
+            <div class="category-card mx-auto">
+                <img src="~/Images/cat_phone.jpg" class="category-img" />
+                <div>Cellphones</div>
+            </div>
+        </a>
+    </div>
+
+    <!-- TVS -->
+    <div class="col-2">
+        <a href="/Category/TVs" class="category-link">
+            <div class="category-card mx-auto">
+                <img src="~/Images/cat_tv.jpg" class="category-img" />
+                <div>TVs & Projector</div>
+            </div>
+        </a>
+    </div>
+
+</div>
